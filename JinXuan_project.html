@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Personal Website</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .nav-btn {
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .features-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .feature-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1 class="hero-title">Welcome to My Personal Website</h1>
+        <p class="hero-subtitle">Explore my profile and useful web tools</p>
+        <div class="nav-buttons">
+            <a href="PersonalInfo.html" class="nav-btn">
+                <i class="fa fa-user"></i>
+                Personal Info
+            </a>
+            <a href="Tools.html" class="nav-btn">
+                <i class="fa fa-calculator"></i>
+                Web Tools
+            </a>
+        </div>
+    </div>
+    
+    <div class="features-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5em; color: #333; margin-bottom: 20px;">What You'll Find Here</h2>
+            <p style="text-align: center; font-size: 1.2em; color: #666; max-width: 600px; margin: 0 auto;">Discover my background, skills, and access a collection of useful web-based tools designed to make your life easier.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                    <h3 class="feature-title">About Me</h3>
+                    <p class="feature-desc">Learn about my academic background, personal interests, and professional journey. Download my CV to get a comprehensive overview of my qualifications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <h3 class="feature-title">Calculator Tools</h3>
+                    <p class="feature-desc">Access various calculators including a basic math calculator, BMI checker, and income tax calculator for quick computations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-exchange"></i>
+                    </div>
+                    <h3 class="feature-title">Unit Converter</h3>
+                    <p class="feature-desc">Convert between different units of measurement including centimeters to meters, meters to kilometers, and vice versa.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Personal Website Project. Created for DSPD 1703 Web Programming Course.</p>
+    </footer>
+</body>
+</html>

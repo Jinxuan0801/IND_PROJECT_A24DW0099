@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tools - DSPD1703 Project</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .page-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+        
+        .tool-icon {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-right: 15px;
+        }
+        
+        .tool-title {
+            font-size: 1.8em;
+            color: #333;
+            margin: 0;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            font-size: 1.1em;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .calc-btn {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 100px;
+        }
+        
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .calc-btn:active {
+            transform: translateY(0);
+        }
+        
+        .result-display {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .converter-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .home-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .home-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2em;
+            }
+            
+            .tool-card {
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .calc-btn {
+                flex: none;
+            }
+            
+            .converter-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Link as Required -->
+    <a href="JinXuan_project.html" class="home-link">
+        <i class="fa fa-home"></i> Home
+    </a>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Web Programming Tools</div>
+            <div class="nav-links">
+                <a href="JinXuan_project.html" class="nav-link"><i class="fa fa-home"></i> Home</a>
+                <a href="PersonalInfo.html" class="nav-link"><i class="fa fa-user"></i> Personal Info</a>
+                <a href="Tools.html" class="nav-link active"><i class="fa fa-calculator"></i> Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Web Programming Tools</h1>
+            <p>DSPD1703 - Individual Project Tools Collection</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Simple Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fa fa-calculator"></i>
+                    </div>
+                    <h2 class="tool-title">Simple Calculator</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">First Number:</label>
+                    <input type="number" id="calcNum1" class="input-field" placeholder="Enter first number" step="any">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Second Number:</label>
+                    <input type="number" id="calcNum2" class="input-field" placeholder="Enter second number" step="any">
+                </div>
+                
+                <div class="button-group">
+                    <button class="calc-btn" onclick="calculate('add')"><i class="fa fa-plus"></i> Add</button>
+                    <button class="calc-btn" onclick="calculate('subtract')"><i class="fa fa-minus"></i> Subtract</button>
+                    <button class="calc-btn" onclick="calculate('multiply')"><i class="fa fa-times"></i> Multiply</button>
+                    <button class="calc-btn" onclick="calculate('divide')"><i class="fa fa-divide"></i> Divide</button>
+                </div>
+                
+                <div class="result-display" id="calcResult">
+                    Enter two numbers and select an operation
+                </div>
+            </div>
+            
+            <!-- BMI Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h2 class="tool-title">BMI Checker</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Weight (kg):</label>
+                    <input type="number" id="weight" class="input-field" placeholder="Enter your weight in kg" step="0.1" min="0">
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Height (cm):</label>
+                    <input type="number" id="height" class="input-field" placeholder="Enter your height in cm" step="0.1" min="0">
+                </div>
+                
+                <div class="button-group">
+                    <button class="calc-btn" onclick="calculateBMI()" style="width: 100%;">
+                        <i class="fa fa-heartbeat"></i> Calculate BMI
+                    </button>
+                </div>
+                
+                <div class="result-display" id="bmiResult">
+                    Enter your weight and height to calculate BMI
+                </div>
+            </div>
+            
+            <!-- Income Tax Calculator -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <h2 class="tool-title">Income Tax Calculator</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Chargeable Income (RM):</label>
+                    <input type="number" id="annualIncome" class="input-field" placeholder="e.g. 5001" step="0.01" min="0">
+                </div>
+                
+                <div class="button-group">
+                    <button class="calc-btn" onclick="calculateTax()" style="width: 100%;">
+                        <i class="fa fa-calculator"></i> Calculate Tax
+                    </button>
+                </div>
+                
+                <div class="result-display" id="taxResult">
+                    Enter your chargeable income to calculate Malaysian income tax
+                </div>
+            </div>
+            
+            <!-- Unit Converter -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fa fa-exchange"></i>
+                    </div>
+                    <h2 class="tool-title">Unit Converter</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Enter Value:</label>
+                    <input type="number" id="unitValue" class="input-field" placeholder="Enter value to convert" step="any" min="0">
+                </div>
+                
+                <div class="converter-buttons">
+                    <button class="calc-btn" onclick="convertUnit('cmToM')">cm → m</button>
+                    <button class="calc-btn" onclick="convertUnit('mToCm')">m → cm</button>
+                    <button class="calc-btn" onclick="convertUnit('mToKm')">m → km</button>
+                    <button class="calc-btn" onclick="convertUnit('kmToM')">km → m</button>
+                </div>
+                
+                <div class="result-display" id="unitResult">
+                    Select a conversion type and enter a value
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple Calculator Functions
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('calcNum1').value);
+            const num2 = parseFloat(document.getElementById('calcNum2').value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('calcResult').innerHTML = 'Please enter valid numbers for both fields';
+                return;
+            }
+
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    document.getElementById('calcResult').innerHTML = `${num1} + ${num2} = ${result}`;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    document.getElementById('calcResult').innerHTML = `${num1} - ${num2} = ${result}`;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    document.getElementById('calcResult').innerHTML = `${num1} × ${num2} = ${result}`;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        document.getElementById('calcResult').innerHTML = 'Error: Cannot divide by zero!';
+                        return;
+                    }
+                    result = num1 / num2;
+                    document.getElementById('calcResult').innerHTML = `${num1} ÷ ${num2} = ${result.toFixed(6)}`;
+                    break;
+                default:
+                    document.getElementById('calcResult').innerHTML = 'Invalid operation';
+            }
+        }
+        
+        // BMI Calculator Function
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                document.getElementById('bmiResult').innerHTML = 'Please enter valid weight and height values';
+                return;
+            }
+            
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+            let category;
+            let color;
+            
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                color = '#3498db';
+            } else if (bmi < 25) {
+                category = 'Normal weight';
+                color = '#27ae60';
+            } else if (bmi < 30) {
+                category = 'Overweight';
+                color = '#f39c12';
+            } else {
+                category = 'Obese';
+                color = '#e74c3c';
+            }
+            
+            document.getElementById('bmiResult').innerHTML = 
+                `BMI: <span style="color: ${color}; font-weight: bold;">${bmi.toFixed(2)}</span>    |   Category: <span style="color: ${color}; font-weight: bold;">${category}</span>`;
+        }
+        
+        // Income Tax Calculator Function (Based on Income tax.html)
+        function calculateTax() {
+            const income = parseFloat(document.getElementById('annualIncome').value);
+            let tax = 0;
+
+            if (isNaN(income) || income < 0) {
+                document.getElementById('taxResult').innerHTML = 'Please enter a valid income amount';
+                return;
+            }
+
+            // Malaysian individual income tax brackets (based on your Income tax.html)
+            const brackets = [
+                { max: 5000, rate: 0 },
+                { max: 20000, rate: 0.01 },
+                { max: 35000, rate: 0.03 },
+                { max: 50000, rate: 0.08 },
+                { max: 70000, rate: 0.13 },
+                { max: 100000, rate: 0.21 },
+                { max: 250000, rate: 0.24 },
+                { max: 400000, rate: 0.245 },
+                { max: 600000, rate: 0.25 },
+                { max: 1000000, rate: 0.26 },
+                { max: 2000000, rate: 0.28 },
+                { max: Infinity, rate: 0.30 }
+            ];
+
+            let previousMax = 0;
+
+            for (let i = 0; i < brackets.length; i++) {
+                const bracket = brackets[i];
+
+                if (income > previousMax) {
+                    const taxable = Math.min(income, bracket.max) - previousMax;
+                    tax += taxable * bracket.rate;
+                    previousMax = bracket.max;
+                } else {
+                    break;
+                }
+            }
+            
+            const netIncome = income - tax;
+            const taxRate = income > 0 ? (tax / income * 100).toFixed(2) : 0;
+            
+            document.getElementById('taxResult').innerHTML = 
+                `<strong>Tax Calculation Results:</strong><br>
+                 Chargeable Income: RM ${income.toFixed(2)}<br>
+                 Income Tax: RM ${tax.toFixed(2)}<br>
+                 Net Income: RM ${netIncome.toFixed(2)}<br>
+                 Effective Tax Rate: ${taxRate}%`;
+        }
+        
+        // Unit Converter Function (Fixed syntax errors)
+        function convertUnit(conversionType) {
+            const value = parseFloat(document.getElementById('unitValue').value);
+            
+            if (isNaN(value) || value < 0) {
+                document.getElementById('unitResult').innerHTML = 'Please enter a valid positive number';
+                return;
+            }
+            
+            let result;
+            let resultText;
+            
+            switch(conversionType) {
+                case 'cmToM':
+                    result = value / 100;
+                    resultText = `${value} cm = ${result} m`;
+                    break;
+                case 'mToCm':
+                    result = value * 100;
+                    resultText = `${value} m = ${result} cm`;
+                    break;
+                case 'mToKm':
+                    result = value / 1000;
+                    resultText = `${value} m = ${result} km`;
+                    break;
+                case 'kmToM':
+                    result = value * 1000;
+                    resultText = `${value} km = ${result} m`;
+                    break;
+                default:
+                    resultText = 'Invalid conversion type';
+            }
+            
+            document.getElementById('unitResult').innerHTML = `<strong>Conversion Result:</strong><br>${resultText}`;
+        }
+        
+        // Add Enter key support for all inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calculator inputs
+            document.getElementById('calcNum1').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') calculate('add');
+            });
+            document.getElementById('calcNum2').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') calculate('add');
+            });
+            
+            // BMI inputs
+            document.getElementById('weight').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') calculateBMI();
+            });
+            document.getElementById('height').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') calculateBMI();
+            });
+            
+            // Tax input
+            document.getElementById('annualIncome').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') calculateTax();
+            });
+            
+            // Unit converter input
+            document.getElementById('unitValue').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') convertUnit('cmToM');
+            });
+        });
+        
+        // Clear all fields function (bonus feature)
+        function clearAll() {
+            document.getElementById('calcNum1').value = '';
+            document.getElementById('calcNum2').value = '';
+            document.getElementById('weight').value = '';
+            document.getElementById('height').value = '';
+            document.getElementById('annualIncome').value = '';
+            document.getElementById('unitValue').value = '';
+            
+            document.getElementById('calcResult').innerHTML = 'Enter two numbers and select an operation';
+            document.getElementById('bmiResult').innerHTML = 'Enter your weight and height to calculate BMI';
+            document.getElementById('taxResult').innerHTML = 'Enter your chargeable income to calculate Malaysian income tax';
+            document.getElementById('unitResult').innerHTML = 'Select a conversion type and enter a value';
+        }
+    </script>
+</body>
+</html>
